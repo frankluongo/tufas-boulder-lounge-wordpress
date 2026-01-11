@@ -34,3 +34,7 @@ screenshot.png
 style.css (required)
 theme.json
 ```
+
+## Resources
+
+- [Including Assets](https://developer.wordpress.org/themes/core-concepts/including-assets/)
