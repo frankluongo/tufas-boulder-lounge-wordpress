@@ -1,0 +1,24 @@
+{
+  "name": "wordpress-theme-and-plugin-starter-kit-2026",
+  "version": "1.0.0",
+  "description": "A Theme/Plugin Starter Kit, made in 2026. Inside should be all the files for developing, building and deploying a WP Theme and WP Plugin out of one repo.",
+  "main": "index.js",
+  "scripts": {
+    "dev:watch": "nodemon wp.watch.js",
+    "watch": "node wp.watch.js"
+  },
+  "scriptDescriptions": {
+    "dev:watch": "Work on 'watch' script with nodemon for development",
+    "watch": "Watch files with node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chokidar": "^5.0.0",
+    "esbuild": "^0.27.2",
+    "lightningcss": "^1.30.2",
+    "nodemon": "^3.1.11"
+  },
+  "type": "module"
+}
