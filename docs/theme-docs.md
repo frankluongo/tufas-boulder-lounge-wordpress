@@ -38,3 +38,5 @@ theme.json
 ## Resources
 
 - [Including Assets](https://developer.wordpress.org/themes/core-concepts/including-assets/)
+- [Template Parts](https://developer.wordpress.org/themes/templates/template-parts/)
+- [Patterns](https://developer.wordpress.org/themes/patterns/)
