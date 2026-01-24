@@ -1,0 +1,158 @@
+/* * Singular page styles * */
+/* ============================================================== */
+/* #region: singular */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* #region: variables */
+:root {
+  /* H1: */
+  --tufas-fs-h1: clamp(
+    var(--wp--preset--font-size--tufas-800),
+    4.5vw,
+    var(--wp--preset--font-size--tufas-1000)
+  );
+  /* H2: */
+  --tufas-fs-h2: clamp(
+    var(--wp--preset--font-size--tufas-700),
+    4vw,
+    var(--wp--preset--font-size--tufas-900)
+  );
+  /* H3: */
+  --tufas-fs-h3: clamp(
+    var(--wp--preset--font-size--tufas-600),
+    3.5vw,
+    var(--wp--preset--font-size--tufas-800)
+  );
+  /* H4: */
+  --tufas-fs-h4: clamp(
+    var(--wp--preset--font-size--tufas-500),
+    3vw,
+    var(--wp--preset--font-size--tufas-700)
+  );
+  /* H5: */
+  --tufas-fs-h5: clamp(
+    var(--wp--preset--font-size--tufas-400),
+    2.5vw,
+    var(--wp--preset--font-size--tufas-600)
+  );
+  /* H6: */
+  --tufas-fs-h6: var(--wp--preset--font-size--tufas-400);
+  /* Paragraph: */
+  --tufas-fs-paragraph: var(--wp--preset--font-size--tufas-500);
+}
+/* #endregion: variables */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* #region: calendly widget */
+.wp-block-post-content .calendly-inline-widget {
+  min-width: 0 !important;
+  width: 100%;
+
+  border: 1px solid var(--wp--preset--color--tufas-green-500);
+  border-radius: 4px;
+  overflow: hidden;
+}
+/* #endregion: calendly widget */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* #region: hero */
+.wp-block-post-content .wp-block-cover.tufas-hero {
+  min-height: 0 !important;
+  height: clamp(240px, 30vh, 378px);
+}
+/* #endregion: hero */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* #region: links */
+.wp-block-post-content a {
+  color: var(--wp--preset--color--tufas-green-500);
+  text-decoration: underline;
+
+  transition: color 150ms ease-in-out;
+}
+
+.wp-block-post-content a:focus-visible {
+  color: var(--wp--preset--color--tufas-green-600);
+
+  outline: 2px solid var(--wp--preset--color--tufas-green-500);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .wp-block-post-content a:hover {
+    color: var(--wp--preset--color--tufas-green-600);
+  }
+}
+
+/* #endregion: links */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* #region: page styles */
+.wp-block-post-content {
+  margin-block-start: 0;
+  padding-block-end: 2rem;
+}
+
+/* Groups inside the page */
+.wp-block-post-content > .wp-block-group {
+  padding-inline: 1rem;
+}
+/* #endregion: page styles */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* #region: typography */
+/* ----------------------------------------------- */
+/* #region: headings */
+.wp-block-post-content h1.wp-block-heading,
+.wp-block-post-content h2.wp-block-heading,
+.wp-block-post-content h3.wp-block-heading,
+.wp-block-post-content h4.wp-block-heading,
+.wp-block-post-content h5.wp-block-heading,
+.wp-block-post-content h6.wp-block-heading {
+  font-family: var(--wp--preset--font-family--tufas-font-secondary);
+  line-height: 1.1;
+  font-weight: 400;
+  text-shadow: -2px 2px #0080642e;
+}
+/* #endregion: headings */
+/* ----------------------------------------------- */
+/* #region: h1 */
+.wp-block-post-content h1.wp-block-heading {
+  font-size: var(--tufas-fs-h1);
+}
+/* #endregion: h1 */
+/* ----------------------------------------------- */
+/* #region: h2 */
+.wp-block-post-content h2.wp-block-heading {
+  font-size: var(--tufas-fs-h2);
+}
+/* #endregion: h2 */
+/* ----------------------------------------------- */
+/* #region: h3 */
+.wp-block-post-content h3.wp-block-heading {
+  font-size: var(--tufas-fs-h3);
+}
+/* #endregion: h3 */
+/* ----------------------------------------------- */
+/* #region: h4 */
+.wp-block-post-content h4.wp-block-heading {
+  font-size: var(--tufas-fs-h4);
+}
+/* #endregion: h4 */
+/* ----------------------------------------------- */
+/* #region: h5 */
+.wp-block-post-content h5.wp-block-heading {
+  font-size: var(--tufas-fs-h5);
+}
+/* #endregion: h5 */
+/* ----------------------------------------------- */
+/* #region: h6 */
+.wp-block-post-content h6.wp-block-heading {
+  font-size: var(--tufas-fs-h6);
+}
+/* #endregion: h6 */
+/* ----------------------------------------------- */
+/* #region: paragraph */
+.wp-block-post-content p {
+  line-height: 1.6;
+  font-size: var(--tufas-fs-paragraph);
+}
+/* #endregion: paragraph */
+/* ----------------------------------------------- */
+/* #endregion: typography */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* #endregion: singular */

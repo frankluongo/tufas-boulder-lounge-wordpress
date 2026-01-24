@@ -1,0 +1,160 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "defaultPalette": true,
+      "defaultGradients": true,
+      "palette": [
+        {
+          "slug": "tufas-black",
+          "color": "#111111",
+          "name": "Tufas Black"
+        },
+        {
+          "slug": "tufas-white",
+          "color": "#ffffff",
+          "name": "Tufas White"
+        },
+        {
+          "slug": "tufas-gray-800",
+          "color": "#2e2e2e",
+          "name": "Tufas Gray | 800"
+        },
+        {
+          "slug": "tufas-gray-700",
+          "color": "#535353",
+          "name": "Tufas Gray | 700"
+        },
+        {
+          "slug": "tufas-gray-600",
+          "color": "#808080",
+          "name": "Tufas Gray | 600"
+        },
+        {
+          "slug": "tufas-gray-500",
+          "color": "#bababa",
+          "name": "Tufas Gray | 500"
+        },
+        {
+          "slug": "tufas-gray-400",
+          "color": "#dddddd",
+          "name": "Tufas Gray | 400"
+        },
+        {
+          "slug": "tufas-gray-300",
+          "color": "#ebebeb",
+          "name": "Tufas Gray | 300"
+        },
+        {
+          "slug": "tufas-gray-200",
+          "color": "#EBEBEB",
+          "name": "Tufas Gray | 200"
+        },
+        {
+          "slug": "tufas-gray-100",
+          "color": "#fafafa",
+          "name": "Tufas Gray | 100"
+        },
+        {
+          "slug": "tufas-green-400",
+          "color": "#4DA693",
+          "name": "Tufas Green | 400"
+        },
+        {
+          "slug": "tufas-green-500",
+          "color": "#008064",
+          "name": "Tufas Green | 500"
+        },
+        {
+          "slug": "tufas-green-600",
+          "color": "#046b55",
+          "name": "Tufas Green | 600"
+        },
+        {
+          "slug": "tufas-yellow-500",
+          "color": "#fff1c9",
+          "name": "Tufas Yellow | 500"
+        },
+        {
+          "slug": "tufas-yellow-600",
+          "color": "#ecc75f",
+          "name": "Tufas Yellow | 600"
+        }
+      ],
+      "gradients": [
+        {
+          "slug": "tufas-gradient-500",
+          "gradient": "linear-gradient(95.97deg, rgba(4, 95, 75, 0.941) 4.72%, rgba(236, 199, 95, 0.85) 96.6%)",
+          "name": "Tufas Gradient | 500"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "960px",
+      "wideSize": "1280px"
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "'Geomanist', 'Helvetica', 'Arial', sans-serif",
+          "slug": "tufas-font-primary",
+          "name": "Tufas Primary Font"
+        },
+        {
+          "fontFamily": "'Chaney', sans-serif",
+          "slug": "tufas-font-secondary",
+          "name": "Tufas Secondary Font"
+        }
+      ],
+      "fontSizes": [
+        {
+          "name": "Small | 300",
+          "slug": "tufas-300",
+          "size": "0.75rem"
+        },
+        {
+          "name": "Caption | 400",
+          "slug": "tufas-400",
+          "size": "0.875rem"
+        },
+        {
+          "name": "Paragraph | 500",
+          "slug": "tufas-500",
+          "size": "1rem"
+        },
+        {
+          "name": "H5 | 600",
+          "slug": "tufas-600",
+          "size": "1.25rem"
+        },
+        {
+          "name": "H4 | 700",
+          "slug": "tufas-700",
+          "size": "1.56rem"
+        },
+        {
+          "name": "H3 | 800",
+          "slug": "tufas-800",
+          "size": "1.95rem"
+        },
+        {
+          "name": "H2 | 900",
+          "slug": "tufas-900",
+          "size": "2.44rem"
+        },
+        {
+          "name": "H1 | 1000",
+          "slug": "tufas-1000",
+          "size": "3.05rem"
+        },
+        {
+          "name": "Display | 1100",
+          "slug": "tufas-1100",
+          "size": "clamp(2rem, 6vw, 3.81rem)"
+        }
+      ]
+    }
+  }
+}

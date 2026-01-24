@@ -1,0 +1,84 @@
+/* Team Block Styles */
+/* ============================================================== */
+/* #region: team */
+.team {
+  max-width: none !important;
+  margin-inline: 0 !important;
+  padding-inline: clamp(1rem, 2.5vw, 2rem);
+}
+/* #endregion: team */
+/* ============================================================== */
+/* #region: container */
+.team__container {
+  --team-container-grid: 1fr;
+  display: grid;
+  grid-template-columns: var(--team-container-grid);
+  gap: 1rem;
+  margin-inline: auto;
+  max-width: var(--wp--style--global--wide-size);
+  width: 100%;
+}
+
+@media (width >= 800px) {
+  .team__container {
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  }
+}
+/* #endregion: container */
+/* ============================================================== */
+/* #region: team member */
+.team__member {
+  position: relative;
+
+  display: flex;
+
+  text-decoration: none !important;
+
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.team__member img {
+  inset: 0;
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.team-member__text {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+
+  color: var(--wp--preset--color--tufas-white);
+
+  background: var(--wp--preset--gradient--tufas-gradient-500);
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.team__member:hover .team-member__text,
+.team__member:focus .team-member__text,
+.team__member.always-visible .team-member__text {
+  opacity: 1;
+}
+
+.team-member-text__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.team-member-text__excerpt p {
+  line-height: 1.5;
+}
+
+/* #endregion: team member */
+/* ============================================================== */

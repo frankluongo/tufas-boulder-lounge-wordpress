@@ -1,0 +1,7 @@
+.entry-content {
+  margin: 0 !important;
+}
+
+.entry-content > .wp-block-spacer {
+  display: none !important;
+}

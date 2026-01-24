@@ -1,0 +1,928 @@
+@layer reset, base, components, typography, header, footer, utilities;
+
+@layer reset {
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body {
+    position: relative;
+
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0;
+  }
+
+  figure {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer base {
+  body.locked {
+    overflow: hidden;
+  }
+
+  html {
+    font-family: var(--wp--preset--font-family--tufas-font-primary);
+  }
+}
+
+@layer components {
+  /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+  /* #region: button */
+  /* --------------------------------------------- */
+  /* #region: button | base */
+  .tbl\:button {
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    appearance: none;
+    cursor: pointer;
+
+    transition:
+      color 150ms ease-in-out,
+      background-color 150ms ease-in-out,
+      border-color 150ms ease-in-out;
+  }
+
+  .tbl\:button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  /* #endregion: button | base */
+  /* --------------------------------------------- */
+  /* #region: button | dot */
+  .tbl\:button--dot {
+    --dot-size: 1.5rem;
+
+    height: var(--dot-size);
+    width: var(--dot-size);
+    border-radius: 50%;
+
+    background-color: var(--wp--preset--color--tufas-white);
+    border: 1px solid var(--wp--preset--color--tufas-gray-200);
+  }
+  /* #endregion: button | dot */
+  /* --------------------------------------------- */
+  /* #region: button | ghost */
+  .tbl\:button--ghost {
+    color: var(--wp--preset--color--tufas-gray-600);
+
+    background-color: var(--wp--preset--color--tufas-gray-100);
+    border: 1px solid var(--wp--preset--color--tufas-gray-200);
+  }
+
+  .tbl\:button--ghost svg {
+    width: 1rem;
+
+    fill: currentColor;
+  }
+
+  @media (hover: hover) {
+    .tbl\:button--ghost:hover {
+      color: var(--wp--preset--color--tufas-white);
+      background-color: var(--wp--preset--color--tufas-green-500);
+    }
+  }
+  /* #endregion: button | ghost */
+  /* --------------------------------------------- */
+  /* #region: button | icon */
+  .tbl\:button--icon {
+    --touch-size: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--touch-size);
+    height: var(--touch-size);
+
+    border-radius: 0.25rem;
+  }
+
+  .tbl\:button--icon svg {
+    height: 1rem;
+  }
+  /* #endregion: button | icon */
+  /* --------------------------------------------- */
+  /* #region: button | primary */
+  .tbl\:button--primary {
+    font-family: var(--wp--preset--font-family--tufas-font-secondary);
+
+    background-color: var(--wp--preset--color--tufas-green-500);
+    border: 1px solid var(--wp--preset--color--tufas-green-600);
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 0px var(--wp--preset--color--tufas-green-600);
+
+    color: var(--wp--preset--color--tufas-white);
+  }
+
+  .tbl\:button--primary svg {
+    fill: currentColor;
+  }
+
+  @media (hover: hover) {
+    .tbl\:button--primary:hover {
+      background-color: var(--wp--preset--color--tufas-green-600);
+    }
+  }
+  /* #endregion: button | primary */
+  /* --------------------------------------------- */
+  /* #region: button | secondary */
+  .tbl\:button--secondary {
+    background-color: transparent;
+    border: 1px solid var(--wp--preset--color--tufas-gray-400);
+
+    color: var(--wp--preset--color--tufas-gray-800);
+  }
+
+  .tbl\:button--secondary svg {
+    fill: currentColor;
+  }
+  /* #endregion: button | secondary */
+  /* --------------------------------------------- */
+  /* #region: button | sizes */
+  /* --------------------------------------------- */
+  .tbl\:button--size-500 {
+    font-size: clamp(0.875rem, 1vw, 1rem);
+
+    padding: 0.5rem 1rem;
+  }
+  /* #enderegion: button | sizes */
+  /* --------------------------------------------- */
+  /* #endregion: button */
+  /* #endregion: button */
+  /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+  /* #region: dropdown menu */
+  .tbl\:dropdown-menu li {
+    position: relative;
+  }
+
+  .tbl\:dropdown-menu.tbl\:dropdown-menu--include-mobile li .sub-menu {
+    position: absolute;
+
+    display: none;
+  }
+
+  @media (width >= 1100px) {
+    .tbl\:dropdown-menu li .sub-menu {
+      --submenu-display: none;
+      --submenu-opacity: 0;
+    }
+
+    .tbl\:dropdown-menu li .sub-menu {
+      left: 1rem;
+      position: absolute;
+
+      display: var(--submenu-display);
+
+      background-color: var(--wp--preset--color--tufas-white);
+      border: 1px solid var(--wp--preset--color--tufas-green-500);
+      border-radius: 0.5rem;
+      opacity: var(--submenu-opacity);
+      transition: opacity 250ms ease-in-out;
+      overflow: hidden;
+    }
+
+    /* Dropdown Submenu li */
+    .tbl\:dropdown-menu li .sub-menu li {
+      transition: background-color 250ms ease-in-out;
+    }
+
+    .tbl\:dropdown-menu li .sub-menu li:focus-within {
+      background-color: var(--wp--preset--color--tufas-gray-200);
+    }
+
+    @media (hover: hover) {
+      .tbl\:dropdown-menu li .sub-menu li:hover {
+        background-color: var(--wp--preset--color--tufas-gray-200);
+      }
+    }
+
+    .tbl\:dropdown-menu li .sub-menu li + li {
+      border-top: 1px solid var(--wp--preset--color--tufas-gray-200);
+    }
+
+    .tbl\:dropdown-menu li .sub-menu.is-ready {
+      --submenu-display: block;
+    }
+
+    .tbl\:dropdown-menu li .sub-menu.is-expanded {
+      --submenu-opacity: 1;
+    }
+  }
+
+  /* #endregion: dropdown menu */
+  /* --------------------------------------------- */
+  /* #region: icon */
+  .tbl\:icon svg {
+    height: var(--size);
+
+    fill: var(--color);
+  }
+  /* #endregion: icon */
+  /* --------------------------------------------- */
+  /* #region: iframe */
+  .tbl\:iframe {
+    position: relative;
+    width: 100%;
+
+    border: 2px solid var(--wp--preset--color--tufas-green-500);
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+
+  .tbl\:iframe iframe {
+    inset: 0;
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  .tbl\:iframe--map {
+    flex: 1;
+
+    padding-top: 60%;
+  }
+  /* #endregion: iframe */
+  /* --------------------------------------------- */
+  /* #region: link */
+  /* --------------------------- */
+  /* #region: link | base */
+  a.tbl\:link {
+    text-decoration: none;
+
+    transition: color 150ms ease-in-out;
+  }
+
+  a.tbl\:link {
+    --link-color: var(--wp--preset--color--tufas-green-500);
+
+    color: var(--link-color);
+  }
+
+  a.tbl\:link:focus-visible {
+    --link-color-on-dark: var(--wp--preset--color--tufas-green-600);
+  }
+
+  @media (hover: hover) {
+    a.tbl\:link:hover {
+      --link-color-on-dark: var(--wp--preset--color--tufas-green-600);
+    }
+  }
+  /* #endregion: link | base */
+  /* --------------------------- */
+  /* #region: link | on-dark */
+  a.tbl\:link--on-dark {
+    --link-color-on-dark: var(--wp--preset--color--tufas-white);
+
+    color: var(--link-color-on-dark);
+  }
+
+  a.tbl\:link--on-dark:focus-visible {
+    --link-color-on-dark: var(--wp--preset--color--tufas-green-400);
+  }
+
+  @media (hover: hover) {
+    a.tbl\:link--on-dark:hover {
+      --link-color-on-dark: var(--wp--preset--color--tufas-green-400);
+    }
+  }
+
+  /* #endregion: link | on-dark */
+  /* --------------------------- */
+  /* #region: link | button primary */
+  a.tbl\:link--button-primary {
+    --padding: 0.5rem 1rem;
+  }
+
+  a.tbl\:link--button-primary {
+    display: inline-block;
+    padding: var(--padding);
+
+    color: var(--wp--preset--color--tufas-white);
+    font-family: var(--wp--preset--font-family--tufas-font-secondary);
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* ! Override WP Style */
+    text-decoration: none !important;
+
+    background-color: var(--wp--preset--color--tufas-green-500);
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 0px var(--wp--preset--color--tufas-green-600);
+  }
+  /* #endregion: link | button primary */
+  /* --------------------------- */
+  /* #endregion: link */
+  /* --------------------------------------------- */
+  /* #region: menu */
+  /* --------------------------------------------- */
+  /* #region: menu | base */
+  .tbl\:menu li a {
+    --link-padding: 1rem;
+
+    display: block;
+    padding: var(--link-padding);
+    width: 100%;
+
+    white-space: nowrap;
+    /* ! Override WP Style */
+    text-decoration: none !important;
+  }
+
+  .tbl\:menu .sub-menu {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+  /* #endregion: menu | base */
+  /* --------------------------- */
+  /* #region: menu | primary */
+  .tbl\:menu--primary li a {
+    color: var(--wp--preset--color--tufas-green-500);
+  }
+
+  .tbl\:menu--primary li a:focus-visible {
+    outline: 1px solid var(--wp--preset--color--tufas-yellow-600);
+  }
+
+  .tbl\:menu--primary li + li {
+    --item-border-top: 1px solid var(--wp--preset--color--tufas-gray-300);
+
+    border-top: var(--item-border-top);
+  }
+
+  .tbl\:menu--primary .sub-menu {
+    --submenu-border-top: 1px solid var(--wp--preset--color--tufas-gray-300);
+
+    border-top: var(--submenu-border-top);
+  }
+
+  .tbl\:menu--primary .sub-menu li {
+    --submenu-item-left-padding: 1rem;
+    padding-left: var(--submenu-item-left-padding);
+  }
+
+  @media (width >= 1100px) {
+    .tbl\:menu--primary .sub-menu li {
+      --submenu-item-left-padding: 0;
+    }
+
+    .tbl\:menu--primary li + li {
+      --item-border-top: none;
+
+      border-top: var(--item-border-top);
+    }
+
+    .tbl\:menu--primary .sub-menu {
+      --submenu-border-top: none;
+    }
+  }
+  /* #endregion: menu | primary */
+  /* --------------------------- */
+  /* #endregion: menu */
+  /* --------------------------------------------- */
+}
+
+@layer typography {
+  .tbl\:h2 {
+    font-family: var(--wp--preset--font-family--tufas-font-secondary);
+    font-size: clamp(2rem, 3vw, 6rem);
+    font-weight: normal;
+  }
+
+  .tbl\:h4 {
+    font-family: var(--wp--preset--font-family--tufas-font-secondary);
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: normal;
+  }
+
+  .tbl\:h5 {
+    font-family: var(--wp--preset--font-family--tufas-font-secondary);
+    font-size: clamp(1.15rem, 2.5vw, 1.25rem);
+    font-weight: normal;
+  }
+
+  .tbl\:paragraph--large {
+    font-size: clamp(1.25rem, 2vw, 2rem);
+  }
+
+  .tbl\:heading--styled {
+    color: var(--wp--preset--color--tufas-green-500);
+
+    text-shadow: -2px 2px 0px rgba(0, 128, 100, 0.18);
+    transform: rotate(-1deg);
+  }
+}
+
+@layer header {
+  /* --------------------------- */
+  /* #region: header */
+  /* --------------------------- */
+  /* #region: header | base */
+  .tufas-header {
+    --offset: 0;
+    position: sticky;
+    top: var(--offset);
+    z-index: 99999;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    filter: drop-shadow(0px 1px 5px rgba(51, 51, 51, 0.08));
+  }
+  /* #endregion: header | base */
+  /* --------------------------- */
+  /* #region: header | bottom bar */
+  .tufas-header__bottom-bar {
+    --justify-content: flex-end;
+    --padding: 0 0.5rem;
+
+    align-items: center;
+    display: flex;
+    flex: 1;
+    gap: 2rem;
+    justify-content: var(--justify-content);
+    padding: var(--padding);
+  }
+
+  @media (width >= 1100px) {
+    .tufas-header__bottom-bar {
+      --padding: 1rem 0.5rem;
+      --justify-content: flex-start;
+    }
+  }
+  /* #endregion: header | bottom bar */
+  /* --------------------------- */
+  /* #region: header | content */
+  .tufas-header__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    background-color: var(--wp--preset--color--tufas-white);
+    background-image: url("/wp-content/themes/tufas-theme/assets/images/tufas-noisy-light-texture.png");
+  }
+  /* #endregion: header | content */
+  /* --------------------------- */
+  /* #region: header | logo */
+  .tufas-header__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tufas-header__logo img {
+    height: auto;
+    margin: 0;
+    width: clamp(48px, 12vw, 150px);
+    padding: 0;
+  }
+  /* #endregion: header | logo */
+  /* --------------------------- */
+  /* #region: header | menu */
+  .tufas-header__menu {
+    --flex-direction: column;
+    --flex: 1;
+    --gap: 0;
+    --width: 100%;
+  }
+
+  .tufas-header__menu {
+    display: flex;
+    flex-direction: var(--flex-direction);
+    flex: var(--flex);
+    gap: var(--gap);
+    margin: 0;
+    padding: 0;
+    width: var(--width);
+
+    list-style: none;
+  }
+
+  @media (width >= 1100px) {
+    .tufas-header__menu {
+      --flex-direction: row;
+      --flex: 0;
+      --height: auto;
+      --gap: 1rem;
+      --width: auto;
+    }
+  }
+  /* #endregion: header | menu */
+  /* --------------------------- */
+  /* #region: header | menu toggle */
+  .tufas-header__menu-toggle {
+    position: relative;
+  }
+
+  @media (width >= 1100px) {
+    .tufas-header__menu-toggle {
+      display: none;
+    }
+  }
+
+  .tufas-header-menu-toggle__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    align-items: center;
+    display: flex;
+    height: 1rem;
+    justify-content: center;
+    width: 1rem;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  .tufas-header__menu-toggle[aria-expanded="false"]
+    .tufas-header-menu-toggle__icon--closed {
+    opacity: 1;
+  }
+
+  .tufas-header__menu-toggle[aria-expanded="true"]
+    .tufas-header-menu-toggle__icon--expanded {
+    opacity: 1;
+  }
+  /* #endregion: header | menu toggle */
+  /* --------------------------- */
+  /* #region: header | navigation */
+  .tufas-header__navigation {
+    --navigation-background-color: var(--wp--preset--color--tufas-white);
+    --display: none;
+    --flex-direction: column;
+    --height: calc(100dvh - var(--tufas-header-height));
+    --opacity: 0;
+    --position: fixed;
+    --width: 100%;
+  }
+
+  .tufas-header__navigation {
+    background-color: var(--navigation-background-color);
+    bottom: 0;
+    left: 0;
+    position: var(--position);
+    right: 0;
+    top: var(--tufas-header-height);
+
+    display: var(--display);
+    height: var(--height);
+    width: var(--width);
+
+    transition: opacity 250ms ease-in-out;
+    opacity: var(--opacity);
+  }
+
+  .tufas-header-navigation__inner {
+    --inner-overflow-y: auto;
+
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    gap: 2rem;
+    flex-direction: var(--flex-direction);
+    width: 100%;
+    overflow-y: var(--inner-overflow-y);
+  }
+
+  .tufas-header__navigation.is-ready {
+    --display: flex;
+  }
+
+  .tufas-header__navigation.is-expanded {
+    opacity: 1;
+  }
+
+  @media (width >= 1100px) {
+    .tufas-header__navigation {
+      --navigation-background-color: transparent;
+      --display: flex;
+      --flex-direction: row;
+      --height: auto;
+      --opacity: 1;
+      --position: static;
+      --width: auto;
+    }
+
+    .tufas-header-navigation__inner {
+      --display: flex;
+      --flex-direction: row;
+      --height: auto;
+      --inner-overflow-y: visible;
+      --width: auto;
+    }
+  }
+
+  .tufas-header-navigation__footer {
+    --footer-display: block;
+
+    display: var(--footer-display);
+    width: 100%;
+    padding: 1rem;
+
+    color: var(--wp--preset--color--tufas-white);
+
+    background-color: var(--wp--preset--color--tufas-gray-800);
+  }
+
+  .tufas-header-navigation__footer .tbl\:contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media (width >= 1100px) {
+    .tufas-header-navigation__footer {
+      --footer-display: none;
+    }
+  }
+  /* #endregion: header | navigation */
+  /* --------------------------- */
+  /* #region: header | top bar */
+  .tufas-header__top-bar {
+    --display: none;
+
+    display: var(--display);
+    padding: 0.5rem;
+
+    color: var(--wp--preset--color--tufas-white);
+    font-size: var(--wp--preset--font-size--tufas-400);
+
+    background-color: var(--wp--preset--color--tufas-gray-800);
+  }
+
+  .tufas-header__top-bar .tbl\:contact {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .tufas-header__top-bar .tbl\:contact ul {
+    /* ! Override WP Style */
+    margin: 0 !important;
+  }
+
+  @media (width >= 1100px) {
+    .tufas-header__top-bar {
+      --display: block;
+    }
+  }
+  /* #endregion: header | top bar */
+  /* --------------------------- */
+  /* #endregion: header */
+  /* --------------------------- */
+}
+
+@layer footer {
+  /* #region: footer */
+  .tufas-footer {
+    padding-block: clamp(2rem, 4vw, 4rem);
+    padding-inline: clamp(1rem, 2vw, 2rem);
+
+    border-top: clamp(2rem, 4vw, 4rem) solid
+      var(--wp--preset--color--tufas-green-500);
+  }
+
+  .tufas-footer--top {
+    background-color: var(--wp--preset--color--tufas-gray-100);
+  }
+
+  .tufas-footer--bottom {
+    color: var(--wp--preset--color--tufas-gray-200);
+
+    background-color: var(--wp--preset--color--tufas-gray-800);
+  }
+  /* #endregion: footer */
+  /* --------------------------- */
+  /* #region: footer | wrapper */
+  .tufas-footer__wrapper {
+    margin-top: 0 !important;
+  }
+  /* #endregion: footer | wrapper */
+  /* --------------------------- */
+  /* #region: footer | address */
+  .tufas-footer__address {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .tufas-footer__address svg {
+    height: 12px;
+
+    fill: currentColor;
+  }
+  /* #endregion: footer | address */
+  /* --------------------------- */
+  /* #region: footer | block */
+  .tufas-footer__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+
+    background-color: var(--wp--preset--color--tufas-white);
+
+    border: 1px solid var(--wp--preset--color--tufas-gray-200);
+    border-radius: 0.5rem;
+  }
+
+  .tufas-footer-block__heading {
+    align-items: center;
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .tufas-footer-block__heading svg {
+    height: 1rem;
+
+    fill: var(--wp--preset--color--tufas-green-500);
+  }
+
+  .tufas-footer-block__heading-text {
+    color: var(--wp--preset--color--tufas-gray-600);
+  }
+
+  .tufas-footer-block__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    margin: 0 0 0 0.5rem;
+    padding: 0 0 0 1rem;
+
+    border-left: 2px solid var(--wp--preset--color--tufas-green-500);
+  }
+
+  .tufas-footer-block__text--list {
+    list-style: none;
+  }
+
+  /* #endregion: footer | block */
+  /* --------------------------- */
+  /* #region: footer | content */
+  .tufas-footer__content {
+    --footer-content-columns: 1fr;
+  }
+
+  .tufas-footer__content {
+    display: grid;
+    gap: clamp(1rem, 2vw, 2rem);
+    grid-template-columns: var(--footer-content-columns);
+    width: 100%;
+    max-width: var(--wp--style--global--wide-size);
+    margin-inline: auto;
+  }
+
+  @media (width > 1100px) {
+    .tufas-footer__content {
+      --footer-content-columns: clamp(10rem, 20vw, 20rem) 1fr;
+    }
+
+    .tufas-footer-content--top {
+      --footer-content-columns: 7fr 5fr;
+    }
+  }
+
+  /* #endregion: footer | content */
+  /* --------------------------- */
+  /* #region: footer | content | left and right */
+  .tufas-footer-content__left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tufas-footer-content__right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  /* #endregion: footer | content | left and right */
+  /* --------------------------- */
+  /* #region: footer | menu */
+  .tufas-footer__menu {
+    --footer-menu-flex-direction: column;
+    --footer-menu-flex-wrap: nowrap;
+
+    display: flex;
+    flex-direction: var(--footer-menu-flex-direction);
+    flex-wrap: var(--footer-menu-flex-wrap);
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  @media (width >= 800px) {
+    .tufas-footer__menu {
+      --footer-menu-flex-direction: row;
+      --footer-menu-flex-wrap: wrap;
+    }
+  }
+  /* #endregion: footer | menu */
+  /* --------------------------- */
+  /* #region: footer | menu | links */
+  .tufas-footer__menu a {
+    transition: color 150ms ease-in-out;
+  }
+
+  .tufas-footer__menu li a {
+    --footer-menu-link-color: var(--wp--preset--color--tufas-white);
+
+    color: var(--footer-menu-link-color);
+  }
+
+  .tufas-footer__menu li a:focus-visible {
+    --footer-menu-link-color: var(--wp--preset--color--tufas-green-400);
+  }
+
+  @media (hover: hover) {
+    .tufas-footer__menu li a:hover {
+      --footer-menu-link-color: var(--wp--preset--color--tufas-green-400);
+    }
+  }
+
+  .tufas-footer__menu .sub-menu a {
+    --submenu-link-color: var(--wp--preset--color--tufas-gray-300);
+
+    color: var(--submenu-link-color);
+    font-size: 0.875rem;
+  }
+
+  .tufas-footer__menu .sub-menu a:focus-visible {
+    --submenu-link-color: var(--wp--preset--color--tufas-green-400);
+  }
+
+  @media (hover: hover) {
+    .tufas-footer__menu .sub-menu a:hover {
+      --submenu-link-color: var(--wp--preset--color--tufas-green-400);
+    }
+  }
+  /* #endregion: footer | menu | links */
+  /* --------------------------- */
+  /* #region: footer | menu | submenu */
+  .tufas-footer__menu .sub-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.5rem 0 0 0;
+    padding: 0 0 0 1rem;
+
+    border-left: 2px solid var(--wp--preset--color--tufas-green-500);
+    list-style: none;
+  }
+  /* #endregion: footer | menu | submenu */
+  /* --------------------------- */
+}
+
+@layer utilities {
+  .tbl-util\:text--gray-800 {
+    color: var(--wp--preset--color--tufas-gray-800);
+  }
+}
