@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/wp-env.json",
+  "mappings": {
+    "wp-content/plugins/example-plugin": "./dist/plugins/example-plugin",
+    "wp-content/themes/example-theme": "./dist/themes/example-theme"
+  },
+  "config": {
+    "WP_DEBUG": true
+  }
+}
