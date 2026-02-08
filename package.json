@@ -6,7 +6,9 @@
   "scripts": {
     "dev:watch": "nodemon wp.watch.js",
     "dev": "concurrently \"npm run start:wp\" \"npm run watch\"",
+    "cleanup:wp": "wp-env cleanup",
     "start:wp": "wp-env start",
+    "stop:wp": "wp-env stop",
     "watch": "node wp.watch.js"
   },
   "scriptDescriptions": {
