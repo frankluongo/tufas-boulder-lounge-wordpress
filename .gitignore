@@ -53,3 +53,4 @@ node_modules/
 dist
 .DS_Store
 .wp-env.json
+wordpress/*

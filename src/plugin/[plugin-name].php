@@ -46,6 +46,9 @@ if (!function_exists("tufas_acf_init_custom_blocks")):
         "category" => "widget",
         "icon" => "images-alt",
         "keywords" => ["class", "classes"],
+        "enqueue_style" => get_parent_theme_file_uri(
+          "/assets/styles/blocks/classes.css",
+        ),
       ]);
 
       acf_register_block_type([

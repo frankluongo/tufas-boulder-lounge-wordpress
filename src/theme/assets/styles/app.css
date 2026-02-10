@@ -348,10 +348,35 @@
     text-decoration: none !important;
 
     background-color: var(--wp--preset--color--tufas-green-500);
+    border: 1px solid var(--wp--preset--color--tufas-green-500);
     border-radius: 0.5rem;
     box-shadow: 0px 2px 0px var(--wp--preset--color--tufas-green-600);
   }
   /* #endregion: link | button primary */
+  /* --------------------------- */
+  /* #region: link | button secondary */
+  a.tbl\:link--button-secondary {
+    --padding: 0.5rem 1rem;
+  }
+
+  a.tbl\:link--button-secondary {
+    display: inline-block;
+    padding: var(--padding);
+
+    color: var(--wp--preset--color--tufas-green-500);
+    font-family: var(--wp--preset--font-family--tufas-font-secondary);
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* ! Override WP Style */
+    text-decoration: none !important;
+
+    background-color: var(--wp--preset--color--tufas-white);
+    border: 1px solid var(--wp--preset--color--tufas-gray-200);
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 0px var(--wp--preset--color--tufas-gray-300);
+  }
+  /* #endregion: link | button secondary */
   /* --------------------------- */
   /* #endregion: link */
   /* --------------------------------------------- */

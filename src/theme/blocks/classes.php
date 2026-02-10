@@ -1,5 +1,3 @@
-<!-- TODO: Update file -->
-
 <?php
 $postType = get_field("post_type");
 $array = [
@@ -14,53 +12,56 @@ if ($limit) {
 $classes = new WP_Query($array);
 ?>
 
-<section class="wrapper p:block-4">
-  <div class="container wide block-gap-3 md:block-gap-6">
+<section class="classes">
+  <div class="classes__container">
     <?php while ($classes->have_posts()):
 
       $classes->the_post();
       $id = get_the_ID();
       $fields = get_field("fields", $id);
       ?>
-      <article class="dgrid md:cols-2 gap-1 align-center alternating">
-        <figure class="dblock image-wrapper rounded has-green-background-color w100% h100%">
-          <img src="<?php echo get_the_post_thumbnail_url(
-            $id,
-          ); ?>" alt="<?php the_title(); ?>">
+      <article class="class">
+        <figure class="class__figure">
+          <img 
+            class="class__image"
+            src="<?php echo get_the_post_thumbnail_url($id); ?>" 
+            alt="<?php the_title(); ?>"
+          />
         </figure>
-        <section class="block-gap-1">
+        <section class="class__content">
           <div>
-            <p class="font-secondary has-gray-medium-color has-small-font-size">Class</p>
-            <h3 class="has-big-font-size"><?php the_title(); ?></h3>
+            <p class="class-content__heading tbl:heading tbl:heading--h4">Class</p>
+            <h3 class="wp-block-heading"><?php the_title(); ?></h3>
           </div>
           <div>
-            <p class="font-secondary has-gray-medium-color has-small-font-size">Date / Time</p>
+            <p class="class-content__heading tbl:heading tbl:heading--h4">Date / Time</p>
             <?php echo $fields["when"]; ?>
           </div>
           <div>
-            <p class="font-secondary has-gray-medium-color has-small-font-size">Price</p>
+            <p class="class-content__heading tbl:heading tbl:heading--h4">Price</p>
             <?php echo $fields["price"]; ?>
           </div>
           <div>
-            <p class="font-secondary has-gray-medium-color has-small-font-size">What To Expect</p>
+            <p class="class-content__heading tbl:heading tbl:heading--h4">What To Expect</p>
             <?php echo $fields["excerpt"]; ?>
           </div>
-          <div class="md:dflex gap-1">
-            <a class="button button:outlined button:default" href="<?php the_permalink(
-              $id,
-            ); ?>">
+          <footer class="class-content__footer">
+            <a 
+              class="tbl:link tbl:link--button-secondary" 
+              href="<?php the_permalink($id); ?>"
+            >
               Learn More
             </a>
             <?php if (!empty($fields["signup_link"]["url"])): ?>
-              <a class="button button:filled-in button:default" href="<?php echo $fields[
-                "signup_link"
-              ]["url"]; ?>" target="<?php echo $fields["signup_link"][
-  "target"
-]; ?>">
+              <a 
+                class="tbl:link tbl:link--button-primary" 
+                href="<?php echo $fields["signup_link"]["url"]; ?>" 
+                target="<?php echo $fields["signup_link"]["target"]; ?>"
+              >
                 <?php echo $fields["signup_link"]["title"]; ?>
               </a>
             <?php endif; ?>
-          </div>
+          </footer>
         </section>
       </article>
     <?php

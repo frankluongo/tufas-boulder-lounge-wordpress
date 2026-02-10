@@ -60,14 +60,14 @@
 /* #endregion: hero */
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 /* #region: links */
-.wp-block-post-content a {
+.wp-block-post-content a:not(.tbl\:link) {
   color: var(--wp--preset--color--tufas-green-500);
   text-decoration: underline;
 
   transition: color 150ms ease-in-out;
 }
 
-.wp-block-post-content a:focus-visible {
+.wp-block-post-content a:not(.tbl\:link):focus-visible {
   color: var(--wp--preset--color--tufas-green-600);
 
   outline: 2px solid var(--wp--preset--color--tufas-green-500);
@@ -75,7 +75,7 @@
 }
 
 @media (hover: hover) {
-  .wp-block-post-content a:hover {
+  .wp-block-post-content a:not(.tbl\:link):hover {
     color: var(--wp--preset--color--tufas-green-600);
   }
 }
@@ -102,7 +102,8 @@
 .wp-block-post-content h3.wp-block-heading,
 .wp-block-post-content h4.wp-block-heading,
 .wp-block-post-content h5.wp-block-heading,
-.wp-block-post-content h6.wp-block-heading {
+.wp-block-post-content h6.wp-block-heading,
+.tbl\:heading {
   font-family: var(--wp--preset--font-family--tufas-font-secondary);
   line-height: 1.1;
   font-weight: 400;
@@ -129,7 +130,8 @@
 /* #endregion: h3 */
 /* ----------------------------------------------- */
 /* #region: h4 */
-.wp-block-post-content h4.wp-block-heading {
+.wp-block-post-content h4.wp-block-heading,
+.tbl\:heading--h4 {
   font-size: var(--tufas-fs-h4);
 }
 /* #endregion: h4 */

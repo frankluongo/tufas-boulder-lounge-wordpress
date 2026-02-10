@@ -12,7 +12,7 @@ Pages I still need to work through for Tufas
 - [x] 04 | [Birthday Parties](http://tufas-boulder-lounge.wp.local/birthdays-groups/)
 - [x] 05 | [Birthday Party Booking During Hours](http://tufas-boulder-lounge.wp.local/birthday-party-booking/)
 - [x] 06 | [Blog](http://tufas-boulder-lounge.wp.local/blog/)
-- [ ] 07 | [Bouldering Classes](http://tufas-boulder-lounge.wp.local/bouldering-classes/)
+- [x] 07 | [Bouldering Classes](http://tufas-boulder-lounge.wp.local/bouldering-classes/)
 - [x] 08 | Classes — No longer exists, just redirects
 - [ ] 09 | [Contact Us](http://tufas-boulder-lounge.wp.local/contact/)
 - [ ] 10 | [Events](http://tufas-boulder-lounge.wp.local/events/)
