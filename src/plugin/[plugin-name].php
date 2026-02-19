@@ -140,435 +140,445 @@ endif;
 // #endregion: acf custom blocks
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // #region: acf | init options page
-//  Add ACF Options Page
-if (function_exists("acf_add_options_page")) {
-  acf_add_options_page([
-    "page_title" => "Theme Settings",
-    "menu_title" => "Theme Settings",
-    "menu_slug" => "theme-settings",
-    "capability" => "edit_posts",
-    "show_in_graphql" => true,
-    "redirect" => false,
-  ]);
-}
+if (!function_exists("tufas_add_acf_options_page")):
+  function tufas_add_acf_options_page()
+  {
+    //  Add ACF Options Page
+    if (function_exists("acf_add_options_page")) {
+      acf_add_options_page([
+        "page_title" => "Theme Settings",
+        "menu_title" => "Theme Settings",
+        "menu_slug" => "theme-settings",
+        "capability" => "edit_posts",
+        "show_in_graphql" => true,
+        "redirect" => false,
+      ]);
+    }
+  }
+  add_action("acf/init", "tufas_add_acf_options_page");
+endif;
 // #endregion: acf | init options page
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // #region: acf | global items
-add_action("acf/include_fields", function () {
-  if (!function_exists("acf_add_local_field_group")) {
-    return;
-  }
+if (!function_exists("tufas_add_acf_field_groups")):
+  function tufas_add_acf_field_groups()
+  {
+    if (!function_exists("acf_add_local_field_group")) {
+      return;
+    }
 
-  acf_add_local_field_group([
-    "key" => "group_606125a4ee801",
-    "title" => "Theme Settings",
-    "fields" => [
-      [
-        "key" => "field_606125a92cc5f",
-        "label" => "Global Items",
-        "type" => "tab",
-      ],
-      [
-        "key" => "field_606125bf2cc60",
-        "name" => "globals",
-        "type" => "group",
-        "layout" => "block",
-        "sub_fields" => [
-          [
-            "key" => "field_global_logo_image",
-            "label" => "Logo Image",
-            "name" => "logo_image",
-            "type" => "image",
-          ],
-          [
-            "key" => "field_606125d52cc61",
-            "label" => "Address (Single Line)",
-            "name" => "address",
-            "type" => "text",
-          ],
-          [
-            "key" => "field_6061268c2cc6e",
-            "label" => "Address (Formatted)",
-            "name" => "address_formatted",
-            "type" => "wysiwyg",
-          ],
-          [
-            "key" => "field_606125dc2cc62",
-            "label" => "Phone Number",
-            "name" => "phone_number",
-            "type" => "text",
-          ],
-          [
-            "key" => "field_606125e22cc63",
-            "label" => "Email Address",
-            "name" => "email_address",
-            "type" => "text",
-          ],
-          [
-            "key" => "field_606126452cc6a",
-            "label" => "Hours",
-            "name" => "hours",
-            "type" => "group",
-            "layout" => "block",
-            "sub_fields" => [
-              [
-                "key" => "field_6061264f2cc6b",
-                "label" => "Days",
-                "name" => "days",
-                "type" => "repeater",
-                "layout" => "block",
-                "button_label" => "Add Row",
-                "sub_fields" => [
-                  [
-                    "key" => "field_6061266d2cc6c",
-                    "label" => "Day(s)",
-                    "name" => "days",
-                    "type" => "text",
-                    "parent_repeater" => "field_6061264f2cc6b",
-                  ],
-                  [
-                    "key" => "field_606126792cc6d",
-                    "label" => "Hours",
-                    "name" => "hours",
-                    "type" => "text",
-                    "parent_repeater" => "field_6061264f2cc6b",
-                  ],
-                ],
-                "rows_per_page" => 20,
-              ],
+    acf_add_local_field_group([
+      "key" => "group_606125a4ee801",
+      "title" => "Theme Settings",
+      "fields" => [
+        [
+          "key" => "field_606125a92cc5f",
+          "label" => "Global Items",
+          "type" => "tab",
+        ],
+        [
+          "key" => "field_606125bf2cc60",
+          "name" => "globals",
+          "type" => "group",
+          "layout" => "block",
+          "sub_fields" => [
+            [
+              "key" => "field_global_logo_image",
+              "label" => "Logo Image",
+              "name" => "logo_image",
+              "type" => "image",
             ],
-          ],
-          [
-            "key" => "field_6061299a21703",
-            "label" => "Google Maps Url",
-            "name" => "google_maps_url",
-            "type" => "url",
-          ],
-          [
-            "key" => "field_tufas_google_maps_embed",
-            "label" => "Google Embed HTML",
-            "name" => "google_maps_embed_html",
-            "type" => "textarea",
-          ],
-          [
-            "key" => "field_606b8b12db397",
-            "label" => "Mission Statement",
-            "name" => "mission_statement",
-            "type" => "textarea",
-          ],
-        ],
-      ],
-      [
-        "key" => "field_606125f02cc64",
-        "label" => "Socials",
-        "type" => "tab",
-      ],
-      [
-        "key" => "field_606125fc2cc65",
-        "name" => "socials",
-        "type" => "group",
-        "layout" => "block",
-        "sub_fields" => [
-          [
-            "key" => "field_606126042cc66",
-            "label" => "Facebook",
-            "name" => "facebook",
-            "type" => "url",
-          ],
-          [
-            "key" => "field_6061260d2cc67",
-            "label" => "Twitter",
-            "name" => "twitter",
-            "type" => "url",
-          ],
-          [
-            "key" => "field_6061261b2cc68",
-            "label" => "Instagram",
-            "name" => "instagram",
-            "type" => "url",
-          ],
-          [
-            "key" => "field_606126242cc69",
-            "label" => "YouTube",
-            "name" => "youtube",
-            "type" => "url",
-          ],
-        ],
-      ],
-      [
-        "key" => "field_606126af2cc6f",
-        "label" => "Services Pricing",
-        "type" => "tab",
-      ],
-      [
-        "key" => "field_606126d72cc70",
-        "name" => "services",
-        "type" => "repeater",
-        "layout" => "table",
-        "button_label" => "Add Row",
-        "sub_fields" => [
-          [
-            "key" => "field_606127152cc71",
-            "label" => "Service",
-            "name" => "service",
-            "type" => "text",
-            "parent_repeater" => "field_606126d72cc70",
-          ],
-          [
-            "key" => "field_6061271c2cc72",
-            "label" => "Discounted Rate",
-            "name" => "discounted_rate",
-            "type" => "text",
-            "parent_repeater" => "field_606126d72cc70",
-          ],
-          [
-            "key" => "field_606127232cc73",
-            "label" => "Base Rate",
-            "name" => "base_rate",
-            "type" => "text",
-            "parent_repeater" => "field_606126d72cc70",
-          ],
-          [
-            "key" => "field_606127292cc74",
-            "label" => "Sustainer Rate",
-            "name" => "sustainer_rate",
-            "type" => "text",
-            "parent_repeater" => "field_606126d72cc70",
-          ],
-          [
-            "key" => "field_60927058bd4a2",
-            "label" => "Includes Link?",
-            "name" => "includes_link",
-            "type" => "true_false",
-            "parent_repeater" => "field_606126d72cc70",
-          ],
-        ],
-        "rows_per_page" => 20,
-      ],
-      [
-        "key" => "field_6061286fe5525",
-        "label" => "Services Offered",
-        "type" => "tab",
-      ],
-      [
-        "key" => "field_6061273b2cc75",
-        "name" => "services_offered",
-        "type" => "repeater",
-        "layout" => "table",
-        "button_label" => "Add Row",
-        "sub_fields" => [
-          [
-            "key" => "field_606127562cc76",
-            "label" => "Service",
-            "name" => "service",
-            "type" => "group",
-            "layout" => "block",
-            "sub_fields" => [
-              [
-                "key" => "field_606127662cc77",
-                "label" => "Name",
-                "name" => "name",
-                "type" => "text",
-              ],
-              [
-                "key" => "field_6061276c2cc78",
-                "label" => "Options",
-                "name" => "options",
-                "type" => "repeater",
-                "layout" => "table",
-                "button_label" => "Add Row",
-                "sub_fields" => [
-                  [
-                    "key" => "field_606127932cc79",
-                    "label" => "Title",
-                    "name" => "title",
-                    "type" => "text",
-                    "parent_repeater" => "field_6061276c2cc78",
-                  ],
-                  [
-                    "key" => "field_6061279c2cc7a",
-                    "label" => "Price",
-                    "name" => "price",
-                    "type" => "text",
-                    "parent_repeater" => "field_6061276c2cc78",
-                  ],
-                  [
-                    "key" => "field_606127a82cc7b",
-                    "label" => "Benefits",
-                    "name" => "benefits",
-                    "type" => "repeater",
-                    "collapsed" => "",
-                    "layout" => "table",
-                    "button_label" => "Add Row",
-                    "sub_fields" => [
-                      [
-                        "key" => "field_606127b92cc7c",
-                        "label" => "Benefit",
-                        "name" => "benefit",
-                        "type" => "textarea",
-                        "parent_repeater" => "field_606127a82cc7b",
-                      ],
+            [
+              "key" => "field_606125d52cc61",
+              "label" => "Address (Single Line)",
+              "name" => "address",
+              "type" => "text",
+            ],
+            [
+              "key" => "field_6061268c2cc6e",
+              "label" => "Address (Formatted)",
+              "name" => "address_formatted",
+              "type" => "wysiwyg",
+            ],
+            [
+              "key" => "field_606125dc2cc62",
+              "label" => "Phone Number",
+              "name" => "phone_number",
+              "type" => "text",
+            ],
+            [
+              "key" => "field_606125e22cc63",
+              "label" => "Email Address",
+              "name" => "email_address",
+              "type" => "text",
+            ],
+            [
+              "key" => "field_606126452cc6a",
+              "label" => "Hours",
+              "name" => "hours",
+              "type" => "group",
+              "layout" => "block",
+              "sub_fields" => [
+                [
+                  "key" => "field_6061264f2cc6b",
+                  "label" => "Days",
+                  "name" => "days",
+                  "type" => "repeater",
+                  "layout" => "block",
+                  "button_label" => "Add Row",
+                  "sub_fields" => [
+                    [
+                      "key" => "field_6061266d2cc6c",
+                      "label" => "Day(s)",
+                      "name" => "days",
+                      "type" => "text",
+                      "parent_repeater" => "field_6061264f2cc6b",
                     ],
-                    "rows_per_page" => 20,
-                    "parent_repeater" => "field_6061276c2cc78",
+                    [
+                      "key" => "field_606126792cc6d",
+                      "label" => "Hours",
+                      "name" => "hours",
+                      "type" => "text",
+                      "parent_repeater" => "field_6061264f2cc6b",
+                    ],
                   ],
-                  [
-                    "key" => "field_606127c52cc7d",
-                    "label" => "Purchase Link",
-                    "name" => "purchase_link",
-                    "type" => "link",
-                    "return_format" => "array",
-                    "parent_repeater" => "field_6061276c2cc78",
-                  ],
+                  "rows_per_page" => 20,
                 ],
-                "rows_per_page" => 20,
               ],
             ],
-            "parent_repeater" => "field_6061273b2cc75",
+            [
+              "key" => "field_6061299a21703",
+              "label" => "Google Maps Url",
+              "name" => "google_maps_url",
+              "type" => "url",
+            ],
+            [
+              "key" => "field_tufas_google_maps_embed",
+              "label" => "Google Embed HTML",
+              "name" => "google_maps_embed_html",
+              "type" => "textarea",
+            ],
+            [
+              "key" => "field_606b8b12db397",
+              "label" => "Mission Statement",
+              "name" => "mission_statement",
+              "type" => "textarea",
+            ],
           ],
         ],
-        "rows_per_page" => 20,
-      ],
-      [
-        "key" => "field_6064dd0253abd",
-        "label" => "Current Occupancy",
-        "type" => "tab",
-        "placement" => "top",
-        "endpoint" => 0,
-        "selected" => 0,
-      ],
-      [
-        "key" => "field_6064dd0e53abe",
-        "label" => "Current # of Occupants",
-        "name" => "current_occupancy",
-        "type" => "number",
-
-        "min" => "",
-        "max" => "",
-        "step" => "",
-      ],
-      [
-        "key" => "field_6064dd2c53abf",
-        "label" => "Total Capacity",
-        "name" => "total_capacity",
-        "type" => "number",
-
-        "min" => "",
-        "max" => "",
-        "step" => "",
-      ],
-      [
-        "key" => "field_616f436e44488",
-        "label" => "Announcement",
-        "name" => "",
-        "type" => "tab",
-
-        "show_in_graphql" => 1,
-        "placement" => "top",
-        "endpoint" => 0,
-        "selected" => 0,
-      ],
-      [
-        "key" => "field_616f438044489",
-        "label" => "Announcement",
-        "name" => "announcement",
-        "type" => "group",
-
-        "show_in_graphql" => 1,
-        "layout" => "block",
-        "sub_fields" => [
-          [
-            "key" => "field_616f43e94448c",
-            "label" => "Display?",
-            "name" => "display",
-            "type" => "true_false",
-
-            "show_in_graphql" => 1,
-            "message" => "",
-            "default_value" => 0,
-            "ui" => 0,
-            "ui_on_text" => "",
-            "ui_off_text" => "",
-          ],
-          [
-            "key" => "field_616f439f4448a",
-            "label" => "Start Date",
-            "name" => "start_date",
-            "type" => "date_picker",
-            "show_in_graphql" => 1,
-            "display_format" => "m/d/Y",
-            "return_format" => "m/d/Y",
-            "first_day" => 1,
-            "default_to_current_date" => 0,
-          ],
-          [
-            "key" => "field_616f43dc4448b",
-            "label" => "End Date",
-            "name" => "end_date",
-            "type" => "date_picker",
-
-            "show_in_graphql" => 1,
-            "display_format" => "m/d/Y",
-            "return_format" => "m/d/Y",
-            "first_day" => 1,
-            "default_to_current_date" => 0,
-          ],
-          [
-            "key" => "field_616f44244448d",
-            "label" => "Announcement Text",
-            "name" => "announcement_text",
-            "type" => "wysiwyg",
-
-            "show_in_graphql" => 1,
-            "tabs" => "all",
-            "toolbar" => "full",
-            "media_upload" => 1,
-            "delay" => 0,
-          ],
-          [
-            "key" => "field_61700b59fe4bb",
-            "label" => "Link (Optional)",
-            "name" => "link",
-            "type" => "link",
-
-            "show_in_graphql" => 1,
-            "return_format" => "array",
-          ],
-        ],
-      ],
-    ],
-    "location" => [
-      [
         [
-          "param" => "options_page",
-          "operator" => "==",
-          "value" => "theme-settings",
+          "key" => "field_606125f02cc64",
+          "label" => "Socials",
+          "type" => "tab",
         ],
-      ],
-      [
         [
-          "param" => "page",
-          "operator" => "==",
-          "value" => "6591",
+          "key" => "field_606125fc2cc65",
+          "name" => "socials",
+          "type" => "group",
+          "layout" => "block",
+          "sub_fields" => [
+            [
+              "key" => "field_606126042cc66",
+              "label" => "Facebook",
+              "name" => "facebook",
+              "type" => "url",
+            ],
+            [
+              "key" => "field_6061260d2cc67",
+              "label" => "Twitter",
+              "name" => "twitter",
+              "type" => "url",
+            ],
+            [
+              "key" => "field_6061261b2cc68",
+              "label" => "Instagram",
+              "name" => "instagram",
+              "type" => "url",
+            ],
+            [
+              "key" => "field_606126242cc69",
+              "label" => "YouTube",
+              "name" => "youtube",
+              "type" => "url",
+            ],
+          ],
+        ],
+        [
+          "key" => "field_606126af2cc6f",
+          "label" => "Services Pricing",
+          "type" => "tab",
+        ],
+        [
+          "key" => "field_606126d72cc70",
+          "name" => "services",
+          "type" => "repeater",
+          "layout" => "table",
+          "button_label" => "Add Row",
+          "sub_fields" => [
+            [
+              "key" => "field_606127152cc71",
+              "label" => "Service",
+              "name" => "service",
+              "type" => "text",
+              "parent_repeater" => "field_606126d72cc70",
+            ],
+            [
+              "key" => "field_6061271c2cc72",
+              "label" => "Discounted Rate",
+              "name" => "discounted_rate",
+              "type" => "text",
+              "parent_repeater" => "field_606126d72cc70",
+            ],
+            [
+              "key" => "field_606127232cc73",
+              "label" => "Base Rate",
+              "name" => "base_rate",
+              "type" => "text",
+              "parent_repeater" => "field_606126d72cc70",
+            ],
+            [
+              "key" => "field_606127292cc74",
+              "label" => "Sustainer Rate",
+              "name" => "sustainer_rate",
+              "type" => "text",
+              "parent_repeater" => "field_606126d72cc70",
+            ],
+            [
+              "key" => "field_60927058bd4a2",
+              "label" => "Includes Link?",
+              "name" => "includes_link",
+              "type" => "true_false",
+              "parent_repeater" => "field_606126d72cc70",
+            ],
+          ],
+          "rows_per_page" => 20,
+        ],
+        [
+          "key" => "field_6061286fe5525",
+          "label" => "Services Offered",
+          "type" => "tab",
+        ],
+        [
+          "key" => "field_6061273b2cc75",
+          "name" => "services_offered",
+          "type" => "repeater",
+          "layout" => "table",
+          "button_label" => "Add Row",
+          "sub_fields" => [
+            [
+              "key" => "field_606127562cc76",
+              "label" => "Service",
+              "name" => "service",
+              "type" => "group",
+              "layout" => "block",
+              "sub_fields" => [
+                [
+                  "key" => "field_606127662cc77",
+                  "label" => "Name",
+                  "name" => "name",
+                  "type" => "text",
+                ],
+                [
+                  "key" => "field_6061276c2cc78",
+                  "label" => "Options",
+                  "name" => "options",
+                  "type" => "repeater",
+                  "layout" => "table",
+                  "button_label" => "Add Row",
+                  "sub_fields" => [
+                    [
+                      "key" => "field_606127932cc79",
+                      "label" => "Title",
+                      "name" => "title",
+                      "type" => "text",
+                      "parent_repeater" => "field_6061276c2cc78",
+                    ],
+                    [
+                      "key" => "field_6061279c2cc7a",
+                      "label" => "Price",
+                      "name" => "price",
+                      "type" => "text",
+                      "parent_repeater" => "field_6061276c2cc78",
+                    ],
+                    [
+                      "key" => "field_606127a82cc7b",
+                      "label" => "Benefits",
+                      "name" => "benefits",
+                      "type" => "repeater",
+                      "collapsed" => "",
+                      "layout" => "table",
+                      "button_label" => "Add Row",
+                      "sub_fields" => [
+                        [
+                          "key" => "field_606127b92cc7c",
+                          "label" => "Benefit",
+                          "name" => "benefit",
+                          "type" => "textarea",
+                          "parent_repeater" => "field_606127a82cc7b",
+                        ],
+                      ],
+                      "rows_per_page" => 20,
+                      "parent_repeater" => "field_6061276c2cc78",
+                    ],
+                    [
+                      "key" => "field_606127c52cc7d",
+                      "label" => "Purchase Link",
+                      "name" => "purchase_link",
+                      "type" => "link",
+                      "return_format" => "array",
+                      "parent_repeater" => "field_6061276c2cc78",
+                    ],
+                  ],
+                  "rows_per_page" => 20,
+                ],
+              ],
+              "parent_repeater" => "field_6061273b2cc75",
+            ],
+          ],
+          "rows_per_page" => 20,
+        ],
+        [
+          "key" => "field_6064dd0253abd",
+          "label" => "Current Occupancy",
+          "type" => "tab",
+          "placement" => "top",
+          "endpoint" => 0,
+          "selected" => 0,
+        ],
+        [
+          "key" => "field_6064dd0e53abe",
+          "label" => "Current # of Occupants",
+          "name" => "current_occupancy",
+          "type" => "number",
+
+          "min" => "",
+          "max" => "",
+          "step" => "",
+        ],
+        [
+          "key" => "field_6064dd2c53abf",
+          "label" => "Total Capacity",
+          "name" => "total_capacity",
+          "type" => "number",
+
+          "min" => "",
+          "max" => "",
+          "step" => "",
+        ],
+        [
+          "key" => "field_616f436e44488",
+          "label" => "Announcement",
+          "name" => "",
+          "type" => "tab",
+
+          "show_in_graphql" => 1,
+          "placement" => "top",
+          "endpoint" => 0,
+          "selected" => 0,
+        ],
+        [
+          "key" => "field_616f438044489",
+          "label" => "Announcement",
+          "name" => "announcement",
+          "type" => "group",
+
+          "show_in_graphql" => 1,
+          "layout" => "block",
+          "sub_fields" => [
+            [
+              "key" => "field_616f43e94448c",
+              "label" => "Display?",
+              "name" => "display",
+              "type" => "true_false",
+
+              "show_in_graphql" => 1,
+              "message" => "",
+              "default_value" => 0,
+              "ui" => 0,
+              "ui_on_text" => "",
+              "ui_off_text" => "",
+            ],
+            [
+              "key" => "field_616f439f4448a",
+              "label" => "Start Date",
+              "name" => "start_date",
+              "type" => "date_picker",
+              "show_in_graphql" => 1,
+              "display_format" => "m/d/Y",
+              "return_format" => "m/d/Y",
+              "first_day" => 1,
+              "default_to_current_date" => 0,
+            ],
+            [
+              "key" => "field_616f43dc4448b",
+              "label" => "End Date",
+              "name" => "end_date",
+              "type" => "date_picker",
+
+              "show_in_graphql" => 1,
+              "display_format" => "m/d/Y",
+              "return_format" => "m/d/Y",
+              "first_day" => 1,
+              "default_to_current_date" => 0,
+            ],
+            [
+              "key" => "field_616f44244448d",
+              "label" => "Announcement Text",
+              "name" => "announcement_text",
+              "type" => "wysiwyg",
+
+              "show_in_graphql" => 1,
+              "tabs" => "all",
+              "toolbar" => "full",
+              "media_upload" => 1,
+              "delay" => 0,
+            ],
+            [
+              "key" => "field_61700b59fe4bb",
+              "label" => "Link (Optional)",
+              "name" => "link",
+              "type" => "link",
+
+              "show_in_graphql" => 1,
+              "return_format" => "array",
+            ],
+          ],
         ],
       ],
-    ],
-    "menu_order" => 0,
-    "position" => "normal",
-    "style" => "default",
-    "label_placement" => "top",
-    "instruction_placement" => "label",
-    "hide_on_screen" => "",
-    "active" => true,
-    "description" => "",
-    "show_in_rest" => 0,
-    "display_title" => "",
-    "show_in_graphql" => 0,
-    "graphql_field_name" => "themeSettings",
-    "map_graphql_types_from_location_rules" => 0,
-    "graphql_types" => "",
-  ]);
-});
+      "location" => [
+        [
+          [
+            "param" => "options_page",
+            "operator" => "==",
+            "value" => "theme-settings",
+          ],
+        ],
+        [
+          [
+            "param" => "page",
+            "operator" => "==",
+            "value" => "6591",
+          ],
+        ],
+      ],
+      "menu_order" => 0,
+      "position" => "normal",
+      "style" => "default",
+      "label_placement" => "top",
+      "instruction_placement" => "label",
+      "hide_on_screen" => "",
+      "active" => true,
+      "description" => "",
+      "show_in_rest" => 0,
+      "display_title" => "",
+      "show_in_graphql" => 0,
+      "graphql_field_name" => "themeSettings",
+      "map_graphql_types_from_location_rules" => 0,
+      "graphql_types" => "",
+    ]);
+  }
+  add_action("acf/init", "tufas_add_acf_field_groups");
+endif;
 // #endregion: acf | global items
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // #region: custom footer hook
